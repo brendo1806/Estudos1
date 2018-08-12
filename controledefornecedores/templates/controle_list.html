@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Endereço</th>
+        <th>Tipo</th>
+    </tr>
+    </thead>
+<tbody>
+{% for controle in controle_list %}
+<tr>
+    <td>
+        <a href="{% url 'controle:detail' controle.id %}">{{ controle.nome }}</a>
+    </td>
+    <td>
+        {{ controle.CNPJ }}
+    </td>
+
+    <td>{{ controle.endereco }}</td>
+    <td>{{ controle.tipo|tipo_choices }}</td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<a href="{% url 'controle:add' %}">Novo</a>
+</body>
+</html>
